@@ -2,6 +2,8 @@
 require 'spec_helper'
 
 describe Belfort::Game do
+  subject { described_class.new(player_count) }
+
   context "#initialize" do
     it "should raise an error with too few players" do
       expect { described_class.new(1) }.to raise_error(ArgumentError)
@@ -12,28 +14,28 @@ describe Belfort::Game do
     end
   end
 
-  context "#players" do
-    subject { described_class.new(player_count) }
+  context "with two players" do
+    let(:player_count) { 2 }
 
-    context "two players" do
-      let(:player_count) { 2 }
-      it { expect(subject.players.size).to eql(2) }
-    end
+    it { should have(2).players }
+  end
 
-    context "two players" do
-      let(:player_count) { 3 }
-      it { expect(subject.players.size).to eql(3) }
-    end
+  context "with three players" do
+    let(:player_count) { 3 }
 
-    context "two players" do
-      let(:player_count) { 4 }
-      it { expect(subject.players.size).to eql(4) }
-    end
+    it { should have(3).players }
+  end
 
-    context "two players" do
-      let(:player_count) { 5 }
-      it { expect(subject.players.size).to eql(5) }
-    end
+  context "with four players" do
+    let(:player_count) { 4 }
+
+    it { should have(4).players }
+  end
+
+  context "with five players" do
+    let(:player_count) { 5 }
+
+    it { should have(5).players }
   end
 end
 
