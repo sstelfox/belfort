@@ -18,24 +18,28 @@ describe Belfort::Game do
     let(:player_count) { 2 }
 
     it { should have(2).players }
+    its(:players) { should be_kind_of(Belfort::Player) }
   end
 
   context "with three players" do
     let(:player_count) { 3 }
 
     it { should have(3).players }
+    its(:players) { should be_kind_of(Belfort::Player) }
   end
 
   context "with four players" do
     let(:player_count) { 4 }
 
     it { should have(4).players }
+    its(:players) { should be_kind_of(Belfort::Player) }
   end
 
   context "with five players" do
     let(:player_count) { 5 }
 
     it { should have(5).players }
+    its(:players) { should be_kind_of(Belfort::Player) }
   end
 end
 
