@@ -7,5 +7,5 @@ module Belfort
   # place pieces (with the exception of guilds)
   SECTION_AREAS = [ :bank, :blacksmith, :gardens, :gatehouse_left,
     :gatehouse_right, :inn, :keep_left, :keep_right, :library, :market, :pub,
-    :tower ]
+    :tower, :wall_left, :wall_right ]
 end
