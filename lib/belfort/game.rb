@@ -22,10 +22,11 @@ module Belfort
     end
 
     def validate_players(players)
-      Array(players).each do |p|
-        unless p.instance_of?(Belfort::Player)
-          fail(ArgumentError, "Only Belfort::Players instances are allowed, received: #{p.class}")
-        end
+      Array(players).map do |p|
+        next p if p.instance_of?(Belfort::Player)
+        next Belfort::Player.new(p) if p.instance_of?(String)
+
+        fail(ArgumentError, "Only Belfort::Players instances are allowed, received: #{p.class}")
       end
     end
   end
