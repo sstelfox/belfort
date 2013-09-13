@@ -42,6 +42,14 @@ describe Belfort::Board do
     end
 
     context "#gatehouse_available?" do
+      it "should raise an error for an invalid direction" do
+        expect { subject.gatehouse_available?(first, :up) }.to raise_error(ArgumentError)
+      end
+
+      it "should raise an error for an invalid section" do
+        expect { subject.gatehouse_available?("Fake Section", :left) }.to raise_error(ArgumentError)
+      end
+
       it "should allow checking availability of a section neighbor's gatehouses" do
         second.should_receive(:available?).with(:gatehouse_right).and_return(true)
         fourth.should_receive(:available?).with(:gatehouse_left).and_return(false)
@@ -50,12 +58,12 @@ describe Belfort::Board do
         subject.gatehouse_available?(third, :right).should be_false
       end
 
-      it "should raise an error for an invalid direction" do
-        expect { subject.gatehouse_available?(first, :up) }.to raise_error(ArgumentError)
-      end
+      it "should wrap around from the first section to the last" do
+        fifth.should_receive(:available?).with(:gatehouse_right).and_return(true)
+        first.should_receive(:available?).with(:gatehouse_left).and_return(false)
 
-      it "should raise an error for an invalid section" do
-        expect { subject.gatehouse_available?("Fake Section", :left) }.to raise_error(ArgumentError)
+        subject.gatehouse_available?(first, :left).should be_true
+        subject.gatehouse_available?(fifth, :right).should be_false
       end
     end
   end

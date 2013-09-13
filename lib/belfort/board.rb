@@ -36,6 +36,7 @@ module Belfort
 
       section_index = sections.index(section)
       section_index += (direction == :left) ? -1 : 1
+      section_index = section_index % 5
       location = (direction == :left) ? :gatehouse_right : :gatehouse_left
 
       sections[section_index].available?(location)
