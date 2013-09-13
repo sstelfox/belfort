@@ -1,9 +1,10 @@
 
 module Belfort
   class Player
-    attr_reader :wood, :stone, :metal, :gold
+    attr_reader :wood, :stone, :metal, :gold, :name
 
-    def initialize
+    def initialize(name)
+      @name = name
       @wood = 1
       @stone = 1
       @metal = 1
