@@ -5,12 +5,18 @@ describe Belfort::Game do
   subject { described_class.new(player_count) }
 
   context "#initialize" do
+    let(:player_count) { 2 }
+
     it "should raise an error with too few players" do
       expect { described_class.new(1) }.to raise_error(ArgumentError)
     end
 
     it "should raise an error with too many players" do
       expect { described_class.new(6) }.to raise_error(ArgumentError)
+    end
+
+    it "should start out in the calendar round" do
+      subject.round.should eql(:calendar)
     end
   end
 
