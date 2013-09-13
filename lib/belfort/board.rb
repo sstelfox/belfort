@@ -18,7 +18,7 @@ module Belfort
     # @returns [Boolean] Whether the space is available
     def available?(section, place)
       fail(ArgumentError, "Invalid section identifer") unless section.between?(1, 5)
-      @sections[(section - 1)].available?(place)
+      sections[(section - 1)].available?(place)
     end
 
     # Purchase a particular location on an individual section.
@@ -27,7 +27,15 @@ module Belfort
     # @param [Symbol] place The name of the place to check for availability.
     def purchase(section, place)
       fail(ArgumentError, "Invalid section identifer") unless section.between?(1, 5)
-      @sections[(section - 1)].purchase(place)
+      sections[(section - 1)].purchase(place)
+    end
+
+    def gatehouse_available?(section, direction)
+      fail(ArgumentError, "Not a real section") unless sections.include?(section)
+      fail(ArgumentError, "Direction is invalid") unless [:left, :right].include?(direction)
+
+      location = (direction == :left) ? :gatehouse_right : :gatehouse_left
+      sections[sections.index(section) - 1].available?(location)
     end
     
     private

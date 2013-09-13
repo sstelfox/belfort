@@ -27,20 +27,36 @@ describe Belfort::Board do
     let(:fifth)     { double("fifth section") }
     let(:sections)  { [first, second, third, fourth, fifth] }
 
+    before do
+      Belfort::Board.any_instance.stub(:default_sections).and_return(sections)
+    end
+
     it "should proxy location checks to it's sections" do
       first.should_receive(:available?).with(:pub).and_return(true)
-      Belfort::Board.any_instance.stub(:default_sections).and_return(sections)
       subject.available?(1, :pub)
     end
 
     it "should proxy purchases to it's sections" do
       third.should_receive(:purchase).with(:bank)
-      Belfort::Board.any_instance.stub(:default_sections).and_return(sections)
       subject.purchase(3, :bank)
     end
 
-    it "should allow checking gatehouse availability for section's neighbors" do
-      pending
+    context "#gatehouse_available?" do
+      it "should allow checking availability of a section neighbor's gatehouses" do
+        second.should_receive(:available?).with(:gatehouse_right).and_return(true)
+        fourth.should_receive(:available?).with(:gatehouse_left).and_return(false)
+
+        subject.gatehouse_available?(third, :left).should be_true
+        subject.gatehouse_available?(third, :right).should be_false
+      end
+
+      it "should raise an error for an invalid direction" do
+        expect { subject.gatehouse_available?(first, :up) }.to raise_error(ArgumentError)
+      end
+
+      it "should raise an error for an invalid section" do
+        expect { subject.gatehouse_available?("Fake Section", :left) }.to raise_error(ArgumentError)
+      end
     end
   end
 end
