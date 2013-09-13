@@ -17,7 +17,11 @@ describe Belfort::Section do
     end
 
     it "should be aware of neighboring sections gatehouse availablilty" do
-      pending
+      board.should_receive(:gatehouse_available?).with(subject, :left).and_return(true)
+      board.should_receive(:gatehouse_available?).with(subject, :right).and_return(false)
+
+      subject.available?(:gatehouse_left).should be_true
+      subject.available?(:gatehouse_right).should be_false
     end
   end
 
