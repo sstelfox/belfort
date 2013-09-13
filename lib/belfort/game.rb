@@ -1,6 +1,5 @@
 
 module Belfort
-
   # A representation of the current game state.
   class Game
     attr_reader :board, :phase, :players, :round, :guilds
@@ -17,6 +16,8 @@ module Belfort
     #   between 2 and 5 players.
     # @options opts [Symbol] :difficulty The level of difficulty for the game,
     #   valid options are :beginner, :normal, and :advanced.
+    # @raise [ArgumentError] If an invalid number of players, either through the
+    #   count variable or through a provided players array.
     # @return [void]
     def initialize(opts = {})
       player_count = opts[:players].nil? ? opts.fetch(:count, 2) : opts[:players].size
@@ -47,7 +48,8 @@ module Belfort
     # Based on the provided difficulty select the guilds that will exist in
     # play.
     #
-    # @param [Symbol] difficulty 
+    # @param [Symbol] difficulty :beginner, :normal, or :advanced
+    # @raise [ArgumentError] if an invalid difficulty is provided.
     # @return [void]
     def generate_guilds(difficulty)
       case difficulty
@@ -67,8 +69,10 @@ module Belfort
 
     # Validate that all of the inputs
     #
-    # @param [Array<String, Belfort::Player>] A list of incoming players to be
-    #   validated.
+    # @param [Array<String, Belfort::Player>] players A list of incoming players
+    #   to be validated.
+    # @raise [ArgumentError] if an invalid value for a player is provided within
+    #   the list.
     # @return [Array<Belfort::Player>] 2-5 players for the game
     def generate_players(players)
       Array(players).map do |p|

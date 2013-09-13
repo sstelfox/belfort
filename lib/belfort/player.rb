@@ -8,6 +8,7 @@ module Belfort
     # Setup the player with the default state and make set their provided name.
     #
     # @param [String] name The name of the player
+    # @return [void]
     def initialize(name)
       self.name = name
       reset
@@ -18,10 +19,7 @@ module Belfort
     #
     # @return [self] The current instance
     def reset
-      @wood = 1
-      @stone = 1
-      @metal = 1
-      @gold = 5
+      @wood, @stone, @metal, @gold = [1, 1, 1, 5]
       self
     end
   end
