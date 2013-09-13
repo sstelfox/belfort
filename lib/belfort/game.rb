@@ -3,7 +3,7 @@ module Belfort
 
   # A representation of the current game state.
   class Game
-    attr_reader :phase, :players, :round
+    attr_reader :board, :phase, :players, :round
 
     # Initializer for the Game class.
     #
@@ -21,6 +21,7 @@ module Belfort
         fail(ArgumentError, "Player count has to be between 2 and 5") 
       end
 
+      @board = Belfort::Board.new
       @phase = ROUNDS.first
       @players = validate_players(opts.fetch(:players, default_players(player_count)))
       @round = 0
