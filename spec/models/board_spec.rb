@@ -2,10 +2,21 @@
 require 'spec_helper'
 
 describe Belfort::Board do
+  subject { described_class.new }
   it { should have(5).sections }
 
   it "should be made up of Belfort:Sections" do
     subject.sections.each { |s| s.should be_instance_of(Belfort::Section) }
+  end
+
+  context "#available?" do
+    it "should raise an error when section ID is too low" do
+      expect { subject.available?(0, :tower) }.to raise_error(ArgumentError)
+    end
+
+    it "should raise an error when section ID is too high" do
+      expect { subject.available?(6, :library) }.to raise_error(ArgumentError)
+    end
   end
 
   context "with section mocks" do

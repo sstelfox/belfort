@@ -17,6 +17,7 @@ module Belfort
     #
     # @returns [Boolean] Whether the space is available
     def available?(section, place)
+      fail(ArgumentError, "Invalid section identifer") unless section.between?(1, 5)
       @sections[(section - 1)].available?(place)
     end
     
