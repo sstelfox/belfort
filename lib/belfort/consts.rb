@@ -9,15 +9,15 @@ module Belfort
     :gatehouse_right, :inn, :keep_left, :keep_right, :library, :market, :pub,
     :tower, :wall_left, :wall_right ]
 
-  # A list of the names of only resource type guilds.
-  RESOURCE_GUILDS = []
-
   # A list of the names of only basic type guilds.
-  BASIC_GUILDS = []
+  BASIC_GUILDS = [ :merchants, :librarians, :architects, :recruiters ]
 
   # A list of the names of only interactive type guilds.
-  INTERACTIVE_GUILDS = []
+  INTERACTIVE_GUILDS = [ :thieves, :bandits, :wizards, :spies ]
+
+  # A list of the names of only resource type guilds.
+  RESOURCE_GUILDS = [ :sawyers, :miners, :bankers, :masons ]
 
   # The combination of all available guilds
-  ALL_GUILDS = RESOURCE_GUILDS + BASIC_GUILDS + INTERACTIVE_GUILDS
+  ALL_GUILDS = BASIC_GUILDS + INTERACTIVE_GUILDS + RESOURCE_GUILDS
 end

@@ -31,7 +31,7 @@ describe Belfort::Game do
       subject.should have(2).players
     end
 
-    context "game difficulty: ", :focus do
+    context "game difficulty: " do
       subject { described_class.new(difficulty: difficulty) }
 
       context "Beginner" do
