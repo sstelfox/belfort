@@ -48,6 +48,16 @@ describe Belfort::Game do
           subject.should have(4).players
         end
       end
+
+      context "Mixed" do
+        let(:player_list) do
+          [ Belfort::Player.new("1"), "Phil" ]
+        end
+
+        it "should accept provided players" do
+          subject.should have(2).players
+        end
+      end
     end
   end
 
