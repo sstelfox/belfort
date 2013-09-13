@@ -20,6 +20,15 @@ module Belfort
       fail(ArgumentError, "Invalid section identifer") unless section.between?(1, 5)
       @sections[(section - 1)].available?(place)
     end
+
+    # Purchase a particular location on an individual section.
+    #
+    # @param [Fixnum] section The section number 1-5
+    # @param [Symbol] place The name of the place to check for availability.
+    def purchase(section, place)
+      fail(ArgumentError, "Invalid section identifer") unless section.between?(1, 5)
+      @sections[(section - 1)].purchase(place)
+    end
     
     private
 

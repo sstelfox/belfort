@@ -34,7 +34,9 @@ describe Belfort::Board do
     end
 
     it "should proxy purchases to it's sections" do
-      pending
+      third.should_receive(:purchase).with(:bank)
+      Belfort::Board.any_instance.stub(:default_sections).and_return(sections)
+      subject.purchase(3, :bank)
     end
 
     it "should allow checking gatehouse availability for section's neighbors" do
