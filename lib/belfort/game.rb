@@ -14,7 +14,7 @@ module Belfort
     # @option opts [Array<Belfort::Player, String>] :players A list of player's
     #   names as Strings or existing Belfort::Player instances. There should be
     #   between 2 and 5 players.
-    # @options opts [Symbol] :difficulty The level of difficulty for the game,
+    # @option opts [Symbol] :difficulty The level of difficulty for the game,
     #   valid options are :beginner, :normal, and :advanced.
     # @raise [ArgumentError] If an invalid number of players, either through the
     #   count variable or through a provided players array.
