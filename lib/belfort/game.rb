@@ -4,7 +4,8 @@ module Belfort
     attr_reader :phase, :players, :round
 
     def initialize(options = {})
-      player_count = options.fetch(:count, 2)
+      players = options.fetch(:player, nil)
+      player_count = players.nil? ? options.fetch(:count, 2) : players.size
 
       unless player_count.between?(2, 5)
         fail(ArgumentError, "Player count has to be between 2 and 5") 
