@@ -23,8 +23,56 @@ describe Belfort::Game do
       subject.round.should eql(0)
     end
 
+    it "should select five guilds" do
+      subject.should have(5).guilds
+    end
+
     it "should default to 2 players" do
       subject.should have(2).players
+    end
+
+    context "game difficulty: ", :focus do
+      subject { described_class.new(difficulty: difficulty) }
+
+      context "Beginner" do
+        let(:difficulty) { :beginner }
+
+        it "should have three resource guilds" do
+          (subject.guilds & Belfort::RESOURCE_GUILDS).size.should eq(3)
+        end
+
+        it "should have two basic guilds" do
+          (subject.guilds & Belfort::BASIC_GUILDS).size.should eq(2)
+        end
+
+        it "should have no interactive guilds" do
+          (subject.guilds & Belfort::INTERACTIVE_GUILDS).should be_empty
+        end
+      end
+
+      context "Normal" do
+        let(:difficulty) { :normal }
+
+        it "should have one resource guild" do
+          (subject.guilds & Belfort::RESOURCE_GUILDS).size.should eq(1)
+        end
+
+        it "should have two basic guilds" do
+          (subject.guilds & Belfort::BASIC_GUILDS).size.should eq(2)
+        end
+
+        it "should have two interactive guilds" do
+          (subject.guilds & Belfort::INTERACTIVE_GUILDS).size.should eq(2)
+        end
+      end
+
+      context "Advanced" do
+        let(:difficulty) { :advanced }
+
+        it "should have five guilds from any category" do
+          (subject.guilds & Belfort::ALL_GUILDS).size.should eq(5)
+        end
+      end
     end
 
     context "with provided" do
