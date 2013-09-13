@@ -41,7 +41,7 @@ module Belfort
     def validate_players(players)
       Array(players).map do |p|
         next p.reset if p.instance_of?(Belfort::Player)
-        next Belfort::Player.new(p) if p.instance_of?(String) 
+        next Belfort::Player.new(p) if p.instance_of?(String)
         fail(ArgumentError, "Only Belfort::Players instances are allowed, received: #{p.class}")
       end
     end
