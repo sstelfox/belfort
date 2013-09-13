@@ -24,11 +24,14 @@ describe Belfort::Game do
     end
 
     context "with provided players" do
-      let(:player_list) { [Belfort::Player.new("1"), Belfort::Player.new("2")] }
+      subject { described_class.new(players: player_list) }
+      let(:player_list) do
+        [ Belfort::Player.new("1"), Belfort::Player.new("2"),
+          Belfort::Player.new("3") ]
+      end
 
       it "should accept provided players" do
-        described_class.new(players: player_list)
-        subject.should have(2).players
+        subject.should have(3).players
       end
     end
   end
