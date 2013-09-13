@@ -5,8 +5,9 @@ task :environment do
   require 'belfort'
 end
 
-desc "Run all the tests"
-task :test => [:environment] do
-  require './spec/test_helper'
+desc "Run a pry session with the code loaded"
+task :console => [:environment] do
+  require 'pry'
+  pry
 end
 
