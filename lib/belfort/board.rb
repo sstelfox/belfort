@@ -8,6 +8,17 @@ module Belfort
     def initialize
       @sections = default_sections
     end
+
+    # Checks to see if the place within a particular area is available for
+    # purchase.
+    #
+    # @param [Fixnum] section The section number 1-5
+    # @param [Symbol] place The name of the place to check for availability.
+    #
+    # @returns [Boolean] Whether the space is available
+    def available?(section, place)
+      @sections[(section - 1)].available?(place)
+    end
     
     private
 
