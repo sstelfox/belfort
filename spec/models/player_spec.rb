@@ -15,7 +15,7 @@ describe Belfort::Player do
 
   it "should allow for updating names" do
     new_name = "John"
-    expect { subject.name = new_name}.to change { subject.name }.from(name).to(new_name)
+    expect { subject.name = new_name }.to change { subject.name }.from(name).to(new_name)
   end
 end
 

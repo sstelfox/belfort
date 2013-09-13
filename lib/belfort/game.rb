@@ -28,15 +28,20 @@ module Belfort
 
     private
 
+    # Given a number, this will generate that many Belfort::Players with numeric
+    # names such as 'Player 1'.
+    #
+    # @param [Fixnum] count The number of players to generate
+    # @return [Array<Belfort::Player>] The generated players
     def default_players(count)
-      count.times.map { |n| Player.new("Player #{n + 1}") }
+      count.times.map { |n| Belfort::Player.new("Player #{n + 1}") }
     end
 
+    # Validate that all of the inputs
     def validate_players(players)
       Array(players).map do |p|
-        next p if p.instance_of?(Belfort::Player)
-        next Belfort::Player.new(p) if p.instance_of?(String)
-
+        next p.reset if p.instance_of?(Belfort::Player)
+        next Belfort::Player.new(p) if p.instance_of?(String) 
         fail(ArgumentError, "Only Belfort::Players instances are allowed, received: #{p.class}")
       end
     end
