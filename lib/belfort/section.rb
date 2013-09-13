@@ -16,8 +16,27 @@ module Belfort
     #
     # @param [Symbol] location A named location to be checked.
     def available?(location)
-      fail(ArgumentError, "Invalid location") unless SECTION_AREAS.include?(location)
+      check_location(location)
       !(@places.fetch(location))
+    end
+
+    # Purchase a plot of land for a player, and mark it owned by them.
+    #
+    # @param [Symbol] location Location that will be purchased.
+    # @param [Belfort::Player] player The new owner of the location.
+    def purchase(location, player)
+      check_location(location)
+      fail(ArgumentError, "Location already taken") unless available?(location)
+      @places[location] = player
+    end
+
+    private
+
+    # Check to see whether a location is a valid area or not.
+    #
+    # @param [Symbol] location A named location to be checked.
+    def check_location(location)
+      fail(ArgumentError, "Invalid location") unless SECTION_AREAS.include?(location)
     end
   end
 end
