@@ -15,8 +15,12 @@ describe Belfort::Game do
       expect { described_class.new(6) }.to raise_error(ArgumentError)
     end
 
-    it "should start out in the calendar round" do
-      subject.round.should eql(:calendar)
+    it "should start out in the calendar phase" do
+      subject.phase.should eql(:calendar)
+    end
+
+    it "should start out in round 0 (pre-game)" do
+      subject.round.should eql(0)
     end
   end
 
