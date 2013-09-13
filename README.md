@@ -29,6 +29,10 @@ and the rulebook. From one of the game designers though:
     correct. You steal 2 gold from any 1 player, or 1 gold each from up to 3
     different players.
 
+Another thing that didn't seem clear to me (and prevented me from using it in
+the first game) though is perfectly clear after reading the rule book around
+the market card.
+
 For the time being I've also chosen to complete ignore the alternate rules for
 a 2-player game. This was a big decision as it can dramatically shift the style
 and power-bases of play. Basically this decision was made due to the complexity
