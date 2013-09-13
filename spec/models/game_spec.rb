@@ -11,6 +11,10 @@ describe Belfort::Game do
       expect { described_class.new(count: 6) }.to raise_error(ArgumentError)
     end
 
+    it "should raise an error for invalid player types" do
+      expect { described_class.new(players: [nil, 4]) }.to raise_error(ArgumentError)
+    end
+
     it "should start out in the calendar phase" do
       subject.phase.should eql(:calendar)
     end
