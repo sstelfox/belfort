@@ -1,8 +1,19 @@
 
 module Belfort
+
+  # A representation of the current game state.
   class Game
     attr_reader :phase, :players, :round
 
+    # Initializer for the Game class.
+    #
+    # @param [Hash] opts The options to initialize a game with.
+    # @option opts [Fixnum] :count The number of players to start a game with.
+    #   If players are provided they will take precedence over this option. This
+    #   should be between 2 and 5.
+    # @option opts [Array<Belfort::Player, String>] A list of player's names as
+    #   Strings or existing Belfort::Player instances. There should be between 2
+    #   and 5 players.
     def initialize(opts = {})
       player_count = opts[:players].nil? ? opts.fetch(:count, 2) : opts[:players].size
 
