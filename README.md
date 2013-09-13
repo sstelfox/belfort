@@ -12,6 +12,23 @@ To TMG in the event they find this project: I have only the utmost respect for
 your board games and this project is based on that appreciation. If you feel
 this project might take any revenue from you let me know and I'll take it down.
 
+## A Note on Rules
+
+To everyone that finds this, please note that the codified mechanics are based
+on my interpretation of the rules and these may differ from what you're used
+too if you've interpreted something differently.
+
+Generally the rules are pretty well covered and the few places that might have
+put me slightly off were covered in the forum on rule
+[clarification](http://boardgamegeek.com/forum/384119/belfort/rules).
+
+One of the things that got me was a misprint between the Thieve's Guild card
+and the rulebook. From one of the game designers though:
+
+    I believe there is a misprint in the rulebook - the Theives' Guild tile is
+    correct. You steal 2 gold from any 1 player, or 1 gold each from up to 3
+    different players.
+
 ## Installation
 
     $ gem install belfort
