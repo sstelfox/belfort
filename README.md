@@ -29,6 +29,12 @@ and the rulebook. From one of the game designers though:
     correct. You steal 2 gold from any 1 player, or 1 gold each from up to 3
     different players.
 
+For the time being I've also chosen to complete ignore the alternate rules for
+a 2-player game. This was a big decision as it can dramatically shift the style
+and power-bases of play. Basically this decision was made due to the complexity
+of implementing alternate rules and that in-house I generally ignore them
+anyway.
+
 ## Installation
 
     $ gem install belfort
