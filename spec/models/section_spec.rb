@@ -15,6 +15,10 @@ describe Belfort::Section do
     it "should raise an error on invalid locations" do
       expect { subject.available?(:beach) }.to raise_error(ArgumentError)
     end
+
+    it "should be aware of neighboring sections gatehouse availablilty" do
+      pending
+    end
   end
 
   context "#purchase" do
