@@ -8,4 +8,16 @@ module Belfort
   SECTION_AREAS = [ :bank, :blacksmith, :gardens, :gatehouse_left,
     :gatehouse_right, :inn, :keep_left, :keep_right, :library, :market, :pub,
     :tower, :wall_left, :wall_right ]
+
+  # A list of the names of only resource type guilds.
+  RESOURCE_GUILDS = []
+
+  # A list of the names of only basic type guilds.
+  BASIC_GUILDS = []
+
+  # A list of the names of only interactive type guilds.
+  INTERACTIVE_GUILDS = []
+
+  # The combination of all available guilds
+  ALL_GUILDS = RESOURCE_GUILDS + BASIC_GUILDS + INTERACTIVE_GUILDS
 end
