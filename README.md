@@ -1,9 +1,9 @@
 # Belfort
 
-This is pure ruby implementation of the board game Belfort. I'm writing it
-mostly as a way to improve my test writing abilities, and if the project gets
-far enough along to rapidly test various strategies for use in the board game
-itself.
+This is pure ruby implementation of the board game
+[Belfort](http://playtmg.com/products/belfort). I'm writing it mostly as a way
+to improve my test writing abilities, and if the project gets far enough along
+to rapidly test various strategies for use in the board game itself.
 
 This is never intended to be 'playable' version. I am minorly concerned that TMG
 might not look kindly on this project if it were too become a playable version.
