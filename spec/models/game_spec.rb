@@ -18,6 +18,19 @@ describe Belfort::Game do
     it "should start out in round 0 (pre-game)" do
       subject.round.should eql(0)
     end
+
+    it "should default to 2 players" do
+      subject.should have(2).players
+    end
+
+    context "with provided players" do
+      let(:player_list) { [Belfort::Player.new("1"), Belfort::Player.new("2")] }
+
+      it "should accept provided players" do
+        described_class.new(players: player_list)
+        subject.should have(2).players
+      end
+    end
   end
 
   context "with players:" do
