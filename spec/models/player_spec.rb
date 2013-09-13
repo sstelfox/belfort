@@ -2,7 +2,7 @@
 require 'spec_helper'
 
 describe Belfort::Player do
-  context "starting up" do
+  context "just initialized" do
     its(:wood)  { should eql(1) }
     its(:stone) { should eql(1) }
     its(:metal) { should eql(1) }
