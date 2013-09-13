@@ -34,8 +34,11 @@ module Belfort
       fail(ArgumentError, "Not a real section") unless sections.include?(section)
       fail(ArgumentError, "Direction is invalid") unless [:left, :right].include?(direction)
 
+      section_index = sections.index(section)
+      section_index += (direction == :left) ? -1 : 1
       location = (direction == :left) ? :gatehouse_right : :gatehouse_left
-      sections[sections.index(section) - 1].available?(location)
+
+      sections[section_index].available?(location)
     end
     
     private
