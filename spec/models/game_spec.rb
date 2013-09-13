@@ -21,6 +21,14 @@ describe Belfort::Game do
     it "should generate Belfort::Players" do
       subject.players.each { |p| p.should be_instance_of(Belfort::Player) }
     end
+
+    it "should have 'Player 1' for the first player's name" do
+      subject.players.first.name.should eql("Player 1")
+    end
+
+    it "should have 'Player 2' for the last player's name" do
+      subject.players.last.name.should eql("Player 2")
+    end
   end
 
   context "with three players" do
@@ -29,6 +37,14 @@ describe Belfort::Game do
     it { should have(3).players }
     it "should generate Belfort::Players" do
       subject.players.each { |p| p.should be_instance_of(Belfort::Player) }
+    end
+
+    it "should have 'Player 1' for the first player's name" do
+      subject.players.first.name.should eql("Player 1")
+    end
+
+    it "should have 'Player 3' for the last player's name" do
+      subject.players.last.name.should eql("Player 3")
     end
   end
 
@@ -39,6 +55,14 @@ describe Belfort::Game do
     it "should generate Belfort::Players" do
       subject.players.each { |p| p.should be_instance_of(Belfort::Player) }
     end
+
+    it "should have 'Player 1' for the first player's name" do
+      subject.players.first.name.should eql("Player 1")
+    end
+
+    it "should have 'Player 4' for the last player's name" do
+      subject.players.last.name.should eql("Player 4")
+    end
   end
 
   context "with five players" do
@@ -47,6 +71,14 @@ describe Belfort::Game do
     it { should have(5).players }
     it "should generate Belfort::Players" do
       subject.players.each { |p| p.should be_instance_of(Belfort::Player) }
+    end
+
+    it "should have 'Player 1' for the first player's name" do
+      subject.players.first.name.should eql("Player 1")
+    end
+
+    it "should have 'Player 5' for the last player's name" do
+      subject.players.last.name.should eql("Player 5")
     end
   end
 end
