@@ -3,8 +3,8 @@ module Belfort
   class Game
     attr_reader :phase, :players, :round
 
-    def initialize(pc, options = {})
-      player_count = options.fetch(:count, pc)
+    def initialize(options = {})
+      player_count = options.fetch(:count, 2)
 
       unless player_count.between?(2, 5)
         fail(ArgumentError, "Player count has to be between 2 and 5") 
