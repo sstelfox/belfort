@@ -51,7 +51,9 @@ module Belfort
     # @return [void]
     def set_guild(guild_name)
       fail(ArgumentError, "A guild has already been set") if @guild
-      fail(ArgumentError, "You need to provide a valid guild") unless ALL_GUILDS.include?(guild_name)
+      unless ALL_GUILDS.include?(guild_name)
+        fail(ArgumentError, "You need to provide a valid guild")
+      end
 
       @guild = { name: guild_name }
     end

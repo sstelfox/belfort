@@ -6,11 +6,16 @@ describe Belfort::Player do
   subject { described_class.new(name) }
 
   context "just initialized" do
-    its(:wood)  { should eql(1) }
-    its(:stone) { should eql(1) }
-    its(:metal) { should eql(1) }
-    its(:gold)  { should eql(5) }
-    its(:name)  { should eql("Jinx") }
+    its(:dwarves) { should eql(3) }
+    its(:elves)   { should eql(3) }
+    its(:gnomes)  { should eql(0) }
+    its(:gold)    { should eql(5) }
+    its(:metal)   { should eql(1) }
+    its(:name)    { should eql("Jinx") }
+    its(:stone)   { should eql(1) }
+    its(:wood)    { should eql(1) }
+
+    its(:properties)  { should eql(12) }
   end
 
   it "should allow for updating names" do
