@@ -77,19 +77,19 @@ describe Belfort::Board do
         subject.gatehouse_available?(first, :left).should be_true
         subject.gatehouse_available?(fifth, :right).should be_false
       end
+    end
 
-      context "#assign_guilds" do
-        it "should assign the guilds to the respective sections" do
-          guild_list = [ :merchants, :bankers, :thieves, :masons, :miners ]
+    context "#assign_guilds" do
+      it "should assign the guilds to the respective sections" do
+        guild_list = [ :merchants, :bankers, :thieves, :masons, :miners ]
 
-          first.should_receive(:set_guild).with(guild_list[0])
-          second.should_receive(:set_guild).with(guild_list[1])
-          third.should_receive(:set_guild).with(guild_list[2])
-          fourth.should_receive(:set_guild).with(guild_list[3])
-          fifth.should_receive(:set_guild).with(guild_list[4])
+        first.should_receive(:set_guild).with(guild_list[0])
+        second.should_receive(:set_guild).with(guild_list[1])
+        third.should_receive(:set_guild).with(guild_list[2])
+        fourth.should_receive(:set_guild).with(guild_list[3])
+        fifth.should_receive(:set_guild).with(guild_list[4])
 
-          subject.assign_guilds(guild_list)
-        end
+        subject.assign_guilds(guild_list)
       end
     end
   end
