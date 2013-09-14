@@ -2,7 +2,7 @@
 module Belfort
   # A representation of the current game state.
   class Game
-    attr_reader :board, :phase, :players, :round, :guilds
+    attr_reader :board, :phase, :player_order, :players, :round, :guilds
 
     # Initializer for the Game class.
     #
@@ -32,6 +32,7 @@ module Belfort
 
       @guilds = generate_guilds(opts.fetch(:difficulty, :beginner))
       @players = generate_players(opts.fetch(:players, default_players(player_count)))
+      @player_order = (1..player_count).to_a.shuffle
     end
 
     # Returns the number of gnomes that are currently available within the game

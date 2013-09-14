@@ -137,6 +137,10 @@ describe Belfort::Game do
       it "should have 'Player 2' for the last player's name" do
         subject.players.last.name.should eql("Player 2")
       end
+
+      it "should have generated a player order" do
+        subject.player_order.size.should eq(2)
+      end
     end
 
     context "three" do
@@ -158,6 +162,10 @@ describe Belfort::Game do
 
       it "should have 'Player 3' for the last player's name" do
         subject.players.last.name.should eql("Player 3")
+      end
+
+      it "should have generated a player order" do
+        subject.player_order.size.should eq(3)
       end
     end
 
@@ -181,6 +189,10 @@ describe Belfort::Game do
       it "should have 'Player 4' for the last player's name" do
         subject.players.last.name.should eql("Player 4")
       end
+
+      it "should have generated a player order" do
+        subject.player_order.size.should eq(4)
+      end
     end
 
     context "five" do
@@ -202,6 +214,10 @@ describe Belfort::Game do
 
       it "should have 'Player 5' for the last player's name" do
         subject.players.last.name.should eql("Player 5")
+      end
+
+      it "should have generated a player order" do
+        subject.player_order.size.should eq(5)
       end
     end
   end
