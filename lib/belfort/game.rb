@@ -65,6 +65,9 @@ module Belfort
       else
         fail(ArgumentError, "Invalid game difficulty provided")
       end
+
+      # Ensure we're not ordered in anyway
+      @guilds.shuffle!
     end
 
     # Validate that all of the inputs

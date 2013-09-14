@@ -42,5 +42,25 @@ describe Belfort::Section do
       expect { subject.purchase(:gardens, player) }.to raise_error(ArgumentError)
     end
   end
+
+  context "#set_guild" do
+    it "should assign the provided guild to the section" do
+      guild = :bandits
+
+      subject.set_guild(guild)
+      subject.guild[:name].should eq(guild)
+    end
+
+    it "should raise an error if the guild isn't real" do
+      expect { subject.set_guild(:church) }.to raise_error(ArgumentError)
+    end
+
+    it "should raise an error if the guild is already set on the section" do
+      guild = :wizards
+
+      subject.set_guild(guild)
+      expect { subject.set_guild(guild) }.to raise_error(ArgumentError)
+    end
+  end
 end
 
