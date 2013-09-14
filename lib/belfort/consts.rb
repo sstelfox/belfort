@@ -3,6 +3,10 @@ module Belfort
   # An ordered list of the rounds that occur within the game.
   ROUNDS = [:calendar, :placement, :collection, :actions, :scoring]
 
+  # A list of the possible card types
+  CARD_TYPES = [ :bank, :blacksmith, :gardens, :gatehouse, :inn, :keep,
+    :library, :market, :pub, :tower ]
+
   # The list of the various places that exist within a section for a player to
   # place pieces (with the exception of guilds)
   SECTION_AREAS = [ :bank, :blacksmith, :gardens, :gatehouse_left,
