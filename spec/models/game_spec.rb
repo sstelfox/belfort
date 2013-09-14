@@ -34,6 +34,11 @@ describe Belfort::Game do
     context "game difficulty: " do
       subject { described_class.new(difficulty: difficulty) }
 
+      it "should raise an error with an invalid difficulty" do
+        difficulty = :invalid
+        expect { subject }.to raise_error
+      end
+
       context "Beginner" do
         let(:difficulty) { :beginner }
 

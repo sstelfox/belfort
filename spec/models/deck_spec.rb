@@ -25,4 +25,12 @@ describe Belfort::Deck do
     card = subject.board[1]
     subject.take_board_card(2).should eq(card)
   end
+
+  it "should raise an error if take_board_card number is too small" do
+    expect { subject.take_board_card(0) }.to raise_error(ArgumentError)
+  end
+
+  it "should raise an error if take_board_card number is too large" do
+    expect { subject.take_board_card(4) }.to raise_error(ArgumentError)
+  end
 end
