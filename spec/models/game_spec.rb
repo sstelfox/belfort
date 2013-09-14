@@ -31,6 +31,34 @@ describe Belfort::Game do
       subject.should have(2).players
     end
 
+    it "should default to the first turn" do
+      subject.turn.should eq(1)
+    end
+
+    context "#current_player" do
+      it "should provide a current player" do
+        subject.current_player.should be_kind_of(Belfort::Player)
+      end
+    end
+
+    context "#end_turn" do
+      it "should advance the turn count" do
+        pending
+      end
+
+      it "should should change the current player" do
+        pending
+      end
+
+      it "should advanced the phase after the last player ends their turn" do
+        pending
+      end
+
+      it "should reset the turn count once a phase has been advanced" do
+        pending
+      end
+    end
+
     context "game difficulty: " do
       subject { described_class.new(difficulty: difficulty) }
 
