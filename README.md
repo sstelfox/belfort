@@ -39,6 +39,17 @@ and power-bases of play. Basically this decision was made due to the complexity
 of implementing alternate rules and that in-house I generally ignore them
 anyway.
 
+I was intending to implement a bank of sorts but a particular line from the
+rules prevented me. The primary reason for existance for the bank would have
+been to limit the total number of resources available within the game. The
+quote that changed my mind was:
+
+    Resources are not meant to be limited by the number of pieces in the game.
+    If the supply ever runs out of a resource, a player can use the included
+    multiplier chips to make change and return some to the supply. For example,
+    if the supply runs out of Stone, a player with a lot of Stone could return
+    5 Stone to the supply, then take 1 Stone on a x5 multiplier chip.
+
 ## Installation
 
     $ gem install belfort
