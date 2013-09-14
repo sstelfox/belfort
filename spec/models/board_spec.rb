@@ -19,6 +19,26 @@ describe Belfort::Board do
     end
   end
 
+  context "#gatehouse_available?" do
+    it "should raise an error for an invalid direction" do
+      expect { subject.gatehouse_available?(double("Subject"), :up) }.to raise_error(ArgumentError)
+    end
+
+    it "should raise an error for an invalid section" do
+      expect { subject.gatehouse_available?("Fake Section", :left) }.to raise_error(ArgumentError)
+    end
+  end
+
+  context "#assign_guilds" do
+    it "should raise an error with too few guilds" do
+      expect { subject.assign_guilds([ :merchants, :librarians, :miners ]) }.to raise_error(ArgumentError)
+    end
+
+    it "should raise an error with too many guilds" do
+      expect { subject.assign_guilds([ :merchants, :librarians, :miners, :thieves, :bankers, :masons ]) }.to raise_error(ArgumentError)
+    end
+  end
+
   context "with section mocks" do
     let(:first)     { double("first section") }
     let(:second)    { double("second section") }
@@ -42,14 +62,6 @@ describe Belfort::Board do
     end
 
     context "#gatehouse_available?" do
-      it "should raise an error for an invalid direction" do
-        expect { subject.gatehouse_available?(first, :up) }.to raise_error(ArgumentError)
-      end
-
-      it "should raise an error for an invalid section" do
-        expect { subject.gatehouse_available?("Fake Section", :left) }.to raise_error(ArgumentError)
-      end
-
       it "should allow checking availability of a section neighbor's gatehouses" do
         second.should_receive(:available?).with(:gatehouse_right).and_return(true)
         fourth.should_receive(:available?).with(:gatehouse_left).and_return(false)
@@ -64,6 +76,20 @@ describe Belfort::Board do
 
         subject.gatehouse_available?(first, :left).should be_true
         subject.gatehouse_available?(fifth, :right).should be_false
+      end
+
+      context "#assign_guilds" do
+        it "should assign the guilds to the respective sections" do
+          guild_list = [ :merchants, :bankers, :thieves, :masons, :miners ]
+
+          first.should_receive(:set_guild).with(guild_list[0])
+          second.should_receive(:set_guild).with(guild_list[1])
+          third.should_receive(:set_guild).with(guild_list[2])
+          fourth.should_receive(:set_guild).with(guild_list[3])
+          fifth.should_receive(:set_guild).with(guild_list[4])
+
+          subject.assign_guilds(guild_list)
+        end
       end
     end
   end

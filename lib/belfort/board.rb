@@ -11,6 +11,19 @@ module Belfort
       @sections = default_sections
     end
 
+    # Assigns guilds in order to the appropriate sections.
+    #
+    # @param [Array<Symbol>] List of guilds to place on the board.
+    # @raise [ArgumentError] If an invalid number of guilds is provided.
+    # @return [void]
+    def assign_guilds(list)
+      fail(ArgumentError, "Invalid number of guilds") unless (list.size == 5)
+
+      list.each_with_index do |guild, index|
+        @sections[index].set_guild(guild)
+      end
+    end
+
     # Checks to see if the place within a particular area is available for
     # purchase.
     #
