@@ -51,6 +51,11 @@ describe Belfort::Section do
       subject.guild[:name].should eq(guild)
     end
 
+    it "should assign no owner to the guild after being set" do
+      subject.set_guild(:merchants)
+      subject.guild[:owner].should be_nil
+    end
+
     it "should raise an error if the guild isn't real" do
       expect { subject.set_guild(:church) }.to raise_error(ArgumentError)
     end

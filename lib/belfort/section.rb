@@ -3,7 +3,7 @@ module Belfort
   # A representation of one the five board sections. Keeps track of the board as
   # well so it can check on the availability of gatehouses.
   class Section
-    attr_reader :board, :places
+    attr_reader :board, :guild, :places
 
     # Setup an empty section of the board.
     #
@@ -41,6 +41,19 @@ module Belfort
       check_location(location)
       fail(ArgumentError, "Location already taken") unless available?(location)
       places[location] = player
+    end
+
+    # Set the guild for this section. This can only be accomplished once.
+    #
+    # @param [Symbol] guild_name A valid guild name
+    # @raise [ArgumentError] if the guild has already been set, or the guild
+    #   name isn't valid.
+    # @return [void]
+    def set_guild(guild_name)
+      fail(ArgumentError, "A guild has already been set") if @guild
+      fail(ArgumentError, "You need to provide a valid guild") unless ALL_GUILDS.include?(guild_name)
+
+      @guild = { name: guild_name }
     end
 
     private
