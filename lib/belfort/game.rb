@@ -34,6 +34,14 @@ module Belfort
       @players = generate_players(opts.fetch(:players, default_players(player_count)))
     end
 
+    # Returns the number of gnomes that are currently available within the game
+    # based on how many the players have and the starting number.
+    #
+    # @return [Fixnum] A number of gnomes
+    def available_gnomes
+      [9, 14, 18, 22][players.size - 2] - players.map(&:gnomes).inject(&:+)
+    end
+
     private
 
     # Given a number, this will generate that many Belfort::Players with numeric

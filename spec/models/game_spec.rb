@@ -117,6 +117,10 @@ describe Belfort::Game do
 
       it { should have(2).players }
 
+      it "should start with 9 available gnomes" do
+        subject.available_gnomes.should eq(9)
+      end
+
       it "should generate Belfort::Players" do
         subject.players.each { |p| p.should be_instance_of(Belfort::Player) }
       end
@@ -134,6 +138,10 @@ describe Belfort::Game do
       let(:player_count) { 3 }
 
       it { should have(3).players }
+
+      it "should start with 14 available gnomes" do
+        subject.available_gnomes.should eq(14)
+      end
 
       it "should generate Belfort::Players" do
         subject.players.each { |p| p.should be_instance_of(Belfort::Player) }
@@ -153,6 +161,10 @@ describe Belfort::Game do
 
       it { should have(4).players }
 
+      it "should start with 18 available gnomes" do
+        subject.available_gnomes.should eq(18)
+      end
+
       it "should generate Belfort::Players" do
         subject.players.each { |p| p.should be_instance_of(Belfort::Player) }
       end
@@ -170,6 +182,10 @@ describe Belfort::Game do
       let(:player_count) { 5 }
 
       it { should have(5).players }
+
+      it "should start with 22 available gnomes" do
+        subject.available_gnomes.should eq(22)
+      end
 
       it "should generate Belfort::Players" do
         subject.players.each { |p| p.should be_instance_of(Belfort::Player) }
