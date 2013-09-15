@@ -44,6 +44,25 @@ module Belfort
       [9, 14, 18, 22][players.size - 2] - players.map(&:gnomes).inject(&:+)
     end
 
+    # Returns the current turn's player instance.
+    #
+    # @return [Belfort::Player] The current player.
+    def current_player
+      players[player_order.rindex(turn)]
+    end
+
+    # Ends the current players turn and advance to the next one.
+    #
+    # @return [void]
+    def end_turn
+      @turn += 1
+
+      if @turn > players.size
+        @turn = 1
+        @phase = ROUNDS[(ROUNDS.rindex(@phase) + 1) % ROUNDS.size]
+      end
+    end
+
     private
 
     # Given a number, this will generate that many Belfort::Players with numeric
