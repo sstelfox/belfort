@@ -2,7 +2,7 @@
 module Belfort
   # A representation of the current game state.
   class Game
-    attr_reader :board, :guilds, :phase, :player_order, :players, :round, :turn
+    attr_reader :board, :guilds, :phase, :player_order, :players, :calendar, :turn
 
     # Initializer for the Game class.
     #
@@ -28,7 +28,7 @@ module Belfort
 
       @board = Belfort::Board.new
       @phase = ROUNDS.first
-      @round = 0
+      @calendar = 0
       @turn  = 1
 
       @guilds = generate_guilds(opts.fetch(:difficulty, :beginner))

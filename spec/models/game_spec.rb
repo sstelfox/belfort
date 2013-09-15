@@ -19,8 +19,8 @@ describe Belfort::Game do
       subject.phase.should eql(:calendar)
     end
 
-    it "should start out in round 0 (pre-game)" do
-      subject.round.should eql(0)
+    it "should start out in calendar month 0 (pre-game)" do
+      subject.calendar.should eql(0)
     end
 
     it "should select five guilds" do
