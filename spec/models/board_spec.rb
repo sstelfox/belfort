@@ -31,11 +31,13 @@ describe Belfort::Board do
 
   context "#assign_guilds" do
     it "should raise an error with too few guilds" do
-      expect { subject.assign_guilds([ :merchants, :librarians, :miners ]) }.to raise_error(ArgumentError)
+      guilds = [ :merchants, :librarians, :miners ]
+      expect { subject.assign_guilds(guilds) }.to raise_error(ArgumentError)
     end
 
     it "should raise an error with too many guilds" do
-      expect { subject.assign_guilds([ :merchants, :librarians, :miners, :thieves, :bankers, :masons ]) }.to raise_error(ArgumentError)
+      guilds = [ :merchants, :librarians, :miners, :thieves, :bankers, :masons ]
+      expect { subject.assign_guilds(guilds) }.to raise_error(ArgumentError)
     end
   end
 
