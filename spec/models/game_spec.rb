@@ -1,6 +1,28 @@
 
 require 'spec_helper'
 
+shared_examples "#end_turn" do
+  context "#end_turn" do
+    it "should advance the turn count" do
+      expect { subject.end_turn }.to change { subject.turn }.from(1).to(2)
+    end
+
+    it "should should change the current player" do
+      expect { subject.end_turn }.to change { subject.current_player }
+    end
+
+    it "should advanced the phase after the last player ends their turn" do
+      expect { subject.players.size.times { subject.end_turn } }
+      .to change { subject.phase }.from(:calendar).to(:placement)
+    end
+
+    it "should reset the turn count once a phase has been advanced" do
+      expect { subject.players.size.times { subject.end_turn } }
+      .to_not change { subject.turn }
+    end
+  end
+end
+
 describe Belfort::Game do
   context "#initialize" do
     it "should raise an error with too few players" do
@@ -152,25 +174,7 @@ describe Belfort::Game do
         subject.player_order.size.should eq(2)
       end
 
-      context "#end_turn" do
-        it "should advance the turn count" do
-          expect { subject.end_turn }.to change { subject.turn }.from(1).to(2)
-        end
-
-        it "should should change the current player" do
-          expect { subject.end_turn }.to change { subject.current_player }
-        end
-
-        it "should advanced the phase after the last player ends their turn" do
-          expect { subject.players.size.times { subject.end_turn } }
-          .to change { subject.phase }.from(:calendar).to(:placement)
-        end
-
-        it "should reset the turn count once a phase has been advanced" do
-          expect { subject.players.size.times { subject.end_turn } }
-          .to_not change { subject.turn }
-        end
-      end
+      it_behaves_like "#end_turn"
     end
 
     context "three" do
@@ -198,25 +202,7 @@ describe Belfort::Game do
         subject.player_order.size.should eq(3)
       end
 
-      context "#end_turn" do
-        it "should advance the turn count" do
-          expect { subject.end_turn }.to change { subject.turn }.from(1).to(2)
-        end
-
-        it "should should change the current player" do
-          expect { subject.end_turn }.to change { subject.current_player }
-        end
-
-        it "should advanced the phase after the last player ends their turn" do
-          expect { subject.players.size.times { subject.end_turn } }
-          .to change { subject.phase }.from(:calendar).to(:placement)
-        end
-
-        it "should reset the turn count once a phase has been advanced" do
-          expect { subject.players.size.times { subject.end_turn } }
-          .to_not change { subject.turn }
-        end
-      end
+      it_behaves_like "#end_turn"
     end
 
     context "four" do
@@ -244,25 +230,7 @@ describe Belfort::Game do
         subject.player_order.size.should eq(4)
       end
 
-      context "#end_turn" do
-        it "should advance the turn count" do
-          expect { subject.end_turn }.to change { subject.turn }.from(1).to(2)
-        end
-
-        it "should should change the current player" do
-          expect { subject.end_turn }.to change { subject.current_player }
-        end
-
-        it "should advanced the phase after the last player ends their turn" do
-          expect { subject.players.size.times { subject.end_turn } }
-          .to change { subject.phase }.from(:calendar).to(:placement)
-        end
-
-        it "should reset the turn count once a phase has been advanced" do
-          expect { subject.players.size.times { subject.end_turn } }
-          .to_not change { subject.turn }
-        end
-      end
+      it_behaves_like "#end_turn"
     end
 
     context "five" do
@@ -290,25 +258,7 @@ describe Belfort::Game do
         subject.player_order.size.should eq(5)
       end
 
-      context "#end_turn" do
-        it "should advance the turn count" do
-          expect { subject.end_turn }.to change { subject.turn }.from(1).to(2)
-        end
-
-        it "should should change the current player" do
-          expect { subject.end_turn }.to change { subject.current_player }
-        end
-
-        it "should advanced the phase after the last player ends their turn" do
-          expect { subject.players.size.times { subject.end_turn } }
-          .to change { subject.phase }.from(:calendar).to(:placement)
-        end
-
-        it "should reset the turn count once a phase has been advanced" do
-          expect { subject.players.size.times { subject.end_turn } }
-          .to_not change { subject.turn }
-        end
-      end
+      it_behaves_like "#end_turn"
     end
   end
 end
