@@ -3,8 +3,8 @@ module Belfort
   # An individual player within the game.
   class Player
     attr_accessor :name
-    attr_reader :dwarves, :elves, :gnomes, :gold, :metal, :properties, :stone,
-      :wood
+    attr_reader :dwarves, :elves, :gnomes, :gold, :metal, :properties, :score,
+      :stone, :wood
 
     # Setup the player with the default state and make set their provided name.
     #
@@ -22,7 +22,7 @@ module Belfort
     def reset
       @gold, @metal, @stone, @wood = [5, 1, 1, 1]
       @dwarves, @elves, @gnomes = [3, 3, 0]
-      @properties = 12
+      @properties, @score = [12, 0]
 
       self
     end

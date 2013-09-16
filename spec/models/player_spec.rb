@@ -14,6 +14,7 @@ describe Belfort::Player do
     its(:name)    { should eql("Jinx") }
     its(:stone)   { should eql(1) }
     its(:wood)    { should eql(1) }
+    its(:score)   { should eql(0) }
 
     its(:properties)  { should eql(12) }
   end
